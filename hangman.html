@@ -7,24 +7,24 @@
 <body>
 	
 	<header class="header">
-		<img class="gameImg" src="assets/images/noose.png">
 		<h1 class="gameTitle">Hangman</h1>
 	</header>
-	<section class="main">
+	<section class="main clearfix">
 		<div class="leftPanel">
-			
+			<img id="wordImage" src="assets/images/questionmark.png">
+			<div id="winArea"></div>
 		</div>
 		<div class="rightPanel">
 			<div>
-				<h3>Guesses remaining:</h3><br>
+				<h3>Guesses remaining:</h3>
 				<div id="guessRemain"></div>
 			</div>
 			<div>
-				<h3>Your word:</h3><br>
-				<div id="wordFill"></div>
+				<h3>Your word:</h3>
+				<div id="wordFill"></div><br>
 			</div>
 			<div>
-				<h3>Letters guessed:</h3><br>
+				<h3>Letters guessed:</h3>
 				<div id="guessMade"></div>
 			</div>
 		</div>

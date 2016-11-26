@@ -8,30 +8,61 @@ body {
 	font-family: 'Gloria Hallelujah', cursive;
 	background-color: #06d1f7;
 	color: #ffffff;
+	margin: 0;
 }
 
 header {
-	width: 70%;
-	margin: 0 auto;
+
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 4em;
+
 }
-.gameTitle, .gameImg {
-	float: left;
-}
-.gameImg {
-	height: 20%;
-	width: 20%;
-	
+.gameTitle {
+	text-align: center;
 }
 .main {
 	clear: both;
 }
+.rightPanel .leftPanel {
+	width: 50%;
+	outline: 1px solid red;
+
+}
+.rightPanel {
+	
+	float: left;
+}
+.leftPanel {
+	margin:0 15%;
+	float: left;
+	padding: 3px;
+}
+#wordImage {
+	width: 250px;
+}
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
 #wordFill div {
 	float: left;
+	align-content: center;
 }
 #guessMade div {
 	float: left;
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*{
+	border: 1px dotted orange;
 }

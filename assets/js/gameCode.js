@@ -2,9 +2,11 @@ var word; //The word we will be guessing for the game
 var guess; //When key is pressed, this will assume value of keystroke
 var wordArray = []; //This will start as all underscores, the length of the word. But will fill in with letters as they are guessed
 var guessArray = []; // This will contain the letters that have been guessed
-var wordGroup = ["pabst", "bohemian", "whiskey", "brews", "hopfest"]
+var wordGroup = ["pabst", "bohemian", "whiskey", "brews", "hopfest", "tequila"]
 var wrongCount = 0; //this will track how many wrong guesses the user makes
 var guessAmount = 10;
+var gameOver = false;
+var userWin = false;
 
 
 
@@ -64,21 +66,18 @@ var game = {
 	//this will check to see if they've maxed out their wrong guesses. They get 10 wrong guesses.
 	checkWrongCount () {
 		if (wrongCount >= 10){
-			alert("Your man has been hung! (Too dark?)")
-			var refresh = confirm("Play again?");
-			if(refresh) {
-				location.reload();
-			}
+			gameOver = true;
+			game.buttonWin();
 		}
 	},
 	checkWin () {
 		var index = wordArray.indexOf("_");
 		if(index === -1) {
-			alert("You guessed " + word + " correctly!" + "\n" + "You win!");
-			var refresh = confirm("Play again?");
-			if(refresh) {
-				location.reload();
-			}
+			gameOver = true;
+			userWin = true;
+			var song = new Audio('assets/sound/whiskeynights.mp3');
+			song.play();
+			game.buttonWin();
 		}	
 	},
 	printGuessesLeft () {
@@ -108,6 +107,52 @@ var game = {
 			}
 			printGuess.appendChild(newGuess);
 		}
+	},
+	buttonWin () {
+		var winArea = document.getElementById("winArea");
+		var youWin = document.createElement("h3");		
+		var winButton = document.createElement("button");
+		winButton.onclick = function () {
+			location.reload();
+		}
+		if (userWin) {
+		youWin.innerHTML = "Your man has been saved! YOU WIN!";
+		game.printPicWin();
+		} else {
+			youWin.innerHTML = "Your man has been hung. YOU LOSE!";
+			document.getElementById("wordImage").src = "assets/images/hangman.jpg"
+		}
+		winButton.innerHTML = "Play again?";
+		winArea.appendChild(youWin);
+		winArea.appendChild(winButton);	
+	},
+	printPicWin () {
+		var imageIndex = wordGroup.indexOf(word);
+		switch (imageIndex) {
+			case 0:
+			document.getElementById("wordImage").src = "assets/images/pbr.jpg";
+			break;
+			case 1:
+			document.getElementById("wordImage").src = "assets/images/nattyboh.jpg";
+			break;
+			case 2: 
+			document.getElementById("wordImage").src = "assets/images/whiskey.jpg";
+			break;
+			case 3:
+			document.getElementById("wordImage").src = "assets/images/beer.jpg";
+			break;
+			case 4: 
+			document.getElementById("wordImage").src = "assets/images/hops.jpg";
+			break;
+			case 5:
+			document.getElementById("wordImage").src = "assets/images/tequila.jpg";
+			break;
+			default:
+			break;
+		}
+	},
+	printPicLose () {
+
 	}
 
 }
@@ -123,9 +168,13 @@ window.onload = function () {
 
 document.onkeyup = function(event) {
 
+
 	// Determines which key was pressed, then makes it lowercase. Assigns it to variable "guess". 
     guess = String.fromCharCode(event.keyCode).toLowerCase();
 
+
+    if (gameOver === false) {
+   
    	game.checkLetter(guess);
    	game.fillWordArray(guess);
    	game.printWordArray();
@@ -136,4 +185,5 @@ document.onkeyup = function(event) {
    	game.checkWrongCount();
    	game.checkWin();
 
+   }
 }
