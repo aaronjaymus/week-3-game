@@ -1,46 +1,64 @@
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Press+Start+2P');
 
 /*
-font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Annie Use Your Telescope', cursive;
 */
 
+* {
+	margin: 0;
+}
+
+html {
+	margin: 0;
+}
+
 body {
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Annie Use Your Telescope', cursive;
 	background-color: #06d1f7;
 	color: #ffffff;
 	margin: 0;
 }
 
 header {
-
+	margin: 10px 0;
 }
 
 h1 {
 	font-size: 4em;
-
+	font-family: 'Press Start 2P', cursive;
 }
 .gameTitle {
 	text-align: center;
 }
 .main {
 	clear: both;
+	width: 80%;
+	margin-top: 0;
 }
-.rightPanel .leftPanel {
-	width: 50%;
-	outline: 1px solid red;
+.rightPanel, .leftPanel {
+	width: 45%;
+	
 
 }
 .rightPanel {
-	
+	padding-left: 5%;
 	float: left;
 }
 .leftPanel {
-	margin:0 15%;
+	margin-left: 10%;
 	float: left;
-	padding: 3px;
+	
+	
+}
+.leftPanel div {
+	clear: both;
+	float: right;
 }
 #wordImage {
-	width: 250px;
+	width: 200px;
+	float: right;
+	
 }
 .clearfix:after { 
    content: "."; 

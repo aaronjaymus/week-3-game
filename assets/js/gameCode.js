@@ -84,15 +84,17 @@ var game = {
 		var guessCounter = document.getElementById("guessRemain");
 		guessCounter.innerHTML = guessAmount - wrongCount;
 	},
+	//prints what is in the word array to the page after each letter press. 
 	printWordArray () {
 		var printWord = document.getElementById("wordFill");
 		printWord.innerHTML = "";
 		for(var i=0; i < wordArray.length; i++){
 			var printLetter = document.createElement("div");
-			printLetter.innerHTML = wordArray[i];
+			printLetter.innerHTML = wordArray[i] + "&nbsp";
 			printWord.appendChild(printLetter);
 		}
 	},
+	//prints what letters have been guessed.
 	printGuessArray () {
 		var printGuess = document.getElementById("guessMade");
 		printGuess.innerHTML = "";
@@ -108,6 +110,7 @@ var game = {
 			printGuess.appendChild(newGuess);
 		}
 	},
+	//creates a "You Win" or "You Lose" message and a button that allows you to refresh the page to play again.
 	buttonWin () {
 		var winArea = document.getElementById("winArea");
 		var youWin = document.createElement("h3");		
@@ -116,7 +119,7 @@ var game = {
 			location.reload();
 		}
 		if (userWin) {
-		youWin.innerHTML = "Your man has been saved! YOU WIN!";
+		youWin.innerHTML = "YOU WIN! Have a drink!";
 		game.printPicWin();
 		} else {
 			youWin.innerHTML = "Your man has been hung. YOU LOSE!";
